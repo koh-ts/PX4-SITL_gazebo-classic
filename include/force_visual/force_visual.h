@@ -39,10 +39,6 @@ namespace gazebo
     private: transport::SubscriberPtr subs;
     private: transport::NodePtr node;
     private: rendering::DynamicLinesPtr forceVector;
-
-    private: std::string frameLinkName;
-    private: rendering::VisualPtr host;
-    private: double forceScale = 1.0;
   };
 }
 

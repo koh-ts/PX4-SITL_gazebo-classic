@@ -115,12 +115,6 @@ endif()
 # find MAVLink
 find_package(MAVLink)
 
-# Check if MAVLINK_DEVELOPMENT should be defined
-if(MAVLINK_DEVELOPMENT)
-  message(STATUS "MAVLink development dialect enabled")
-  add_definitions(-DMAVLINK_DEVELOPMENT)
-endif()
-
 # see if catkin was invoked to build this
 if (CATKIN_DEVEL_PREFIX)
   message(STATUS "catkin ENABLED")
@@ -386,6 +380,12 @@ add_library(gazebo_parachute_plugin SHARED src/gazebo_parachute_plugin.cpp)
 add_library(gazebo_pose_sniffer_plugin SHARED src/gazebo_pose_sniffer_plugin.cpp)
 add_library(gazebo_airship_dynamics_plugin SHARED src/gazebo_airship_dynamics_plugin.cpp)
 add_library(gazebo_drop_plugin SHARED src/gazebo_drop_plugin.cpp)
+add_library(gazebo_dynamic_wind_plugin SHARED src/gazebo_dynamic_wind_plugin.cpp)
+
+find_package(TBB REQUIRED)
+
+add_executable(wind_publisher src/wind_publisher.cpp)
+target_link_libraries(wind_publisher ${GAZEBO_LIBRARIES} TBB::tbb)
 
 set(plugins
   gazebo_airspeed_plugin

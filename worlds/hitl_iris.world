@@ -50,5 +50,32 @@
       <uri>model://iris_hitl</uri>
       <pose>1.01 0.98 0.83 0 0 1.14</pose>
     </include>
+
+    <!-- 風プラグイン（初期風速0、外部スクリプトで動的制御） -->
+    
+    <plugin name="wind_plugin" filename="libgazebo_wind_plugin.so">
+      <robotNamespace/>
+      <windPubTopic>world_wind</windPubTopic>
+      <publishRate>50</publishRate>
+      <windVelocityMean>5.0</windVelocityMean>
+      <windVelocityMax>7.0</windVelocityMax>
+      <windVelocityVariance>1.0</windVelocityVariance>
+      <windDirectionMean>1 0 0</windDirectionMean>
+      <windDirectionVariance>0.15</windDirectionVariance>
+      <windGustStart>0</windGustStart>
+      <windGustDuration>0</windGustDuration>
+      <windGustVelocityMean>0.0</windGustVelocityMean>
+      <windGustVelocityMax>0.0</windGustVelocityMax>
+      <windGustVelocityVariance>0.0</windGustVelocityVariance>
+      <windGustDirectionMean>1 1 0</windGustDirectionMean>
+      <windGustDirectionVariance>0.0</windGustDirectionVariance>
+      <frameId>world</frameId>
+    </plugin>
+   
+
+    <!-- <plugin name="dynamic_wind_plugin" filename="libgazebo_dynamic_wind_plugin.so">
+      <linkName>base_link</linkName>
+      <windVelocity>0 0 0</windVelocity>
+    </plugin> -->
   </world>
 </sdf>
